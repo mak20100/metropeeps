@@ -236,6 +236,20 @@
       <version>1.5.3</version>
     </dependency>
     
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.15</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>mm-mysql</groupId>
+    	<artifactId>mm-mysql</artifactId>
+    	<version>2.0.7</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
+    </dependency>
   </dependencies>
   
   <dependencyManagement>
