@@ -21,28 +21,25 @@
             <div class="dialog">
                 <table>
                     <tbody>
-                    
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.id.label" default="Id" /></td>
-                            
                             <td valign="top" class="value">${fieldValue(bean: userInstance, field: "id")}</td>
-                            
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.email.label" default="Email" /></td>
-                            
                             <td valign="top" class="value">${fieldValue(bean: userInstance, field: "email")}</td>
-                            
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.firstName.label" default="First Name" /></td>
-                            
                             <td valign="top" class="value">${fieldValue(bean: userInstance, field: "firstName")}</td>
-                            
                         </tr>
-                    
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.lastName.label" default="Last Name" /></td>
+                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "lastName")}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
