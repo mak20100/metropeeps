@@ -3,13 +3,11 @@ package com.metropeeps
 import org.apache.commons.lang.builder.EqualsBuilder
 import org.apache.commons.lang.builder.HashCodeBuilder
 
-class User extends Auditable{
-	String firstName, lastName, email
+class User extends _Auditable{
+	String email
 
 	static constraints = {
 		email(unique:true, blank:false, email:true)
-		firstName(blank:false, size:2..32)
-		lastName(blank:false, size:2..32)
 	}
 
 	boolean equals( obj ) {
