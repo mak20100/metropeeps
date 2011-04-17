@@ -3,9 +3,8 @@ package com.metropeeps
 import org.apache.commons.lang.builder.EqualsBuilder
 import org.apache.commons.lang.builder.HashCodeBuilder
 
-class User {
+class User extends Auditable{
 	String firstName, lastName, email
-	Date dateCreated, lastUpdated // GORM convention
 
 	static constraints = {
 		email(unique:true, blank:false, email:true)
