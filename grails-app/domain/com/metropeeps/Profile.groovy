@@ -7,7 +7,7 @@ import org.apache.commons.lang.builder.ToStringBuilder
 import com.Auditable
 
 class Profile extends Auditable{
-	static belongsTo = [user:User]
+	static belongsTo = User
 	
 	String firstName, lastName, nickName
 	//	String profilePic

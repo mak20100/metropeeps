@@ -63,14 +63,6 @@
                             <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "lastUpdated")}</td>
                             
                         </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="profile.user.label" default="User" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${profileInstance?.user?.id}">${profileInstance?.user?.email}</g:link></td>
-                            
-                        </tr>
-                    
                     </tbody>
                 </table>
             </div>
