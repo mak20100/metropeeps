@@ -1,3 +1,10 @@
+import org.joda.time.DateTime
+import org.joda.time.LocalDate
+import org.joda.time.LocalTime
+import org.joda.time.contrib.hibernate.PersistentDateTime
+import org.joda.time.contrib.hibernate.PersistentLocalDate
+import org.joda.time.contrib.hibernate.PersistentLocalTimeExact
+
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
 
@@ -27,6 +34,11 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
                       multipartForm: 'multipart/form-data'
                     ]
 
+grails.gorm.default.mapping = {
+	'user-type' type: PersistentLocalDate, class: LocalDate
+	'user-type' type: PersistentLocalTimeExact, class: LocalTime
+	'user-type' type: PersistentDateTime, class: DateTime
+}
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
@@ -54,7 +66,7 @@ grails.exceptionresolver.params.exclude = ['password']
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://www.metropeeps.com"
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"

@@ -31,6 +31,51 @@
                     <table>
                         <tbody>
                         
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="title"><g:message code="event.title.label" default="Title" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'title', 'errors')}">
+                                    <input type="text" maxlength="80" id="title" name="title" value="${fieldValue(bean:eventInstance,field:'title')}"/>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="description"><g:message code="event.description.label" default="Description" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'description', 'errors')}">
+                                    <input type="text" id="description" name="description" value="${fieldValue(bean:eventInstance,field:'description')}"/>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="date"><g:message code="event.date.label" default="Date" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'date', 'errors')}">
+                                    <joda:datePicker name="date" value="${eventInstance?.date}" ></joda:datePicker>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="owner"><g:message code="event.owner.label" default="Owner" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'owner', 'errors')}">
+                                    <g:select optionKey="id" optionValue="${{it.email}}" from="${com.metropeeps.User.list()}" name="owner.id" value="${eventInstance?.owner?.id}" ></g:select>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="time"><g:message code="event.time.label" default="Time" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'time', 'errors')}">
+                                    <joda:timePicker name="time" value="${eventInstance?.time}" ></joda:timePicker>
+                                </td>
+                            </tr>
+                        
                         </tbody>
                     </table>
                 </div>

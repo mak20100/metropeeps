@@ -13,6 +13,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/integration"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/unit"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.link_to_grails_plugins/tomcat-1.3.7/src/groovy"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.link_to_grails_plugins/joda-time-1.1/grails-app/taglib"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.link_to_grails_plugins/joda-time-1.1/src/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.link_to_grails_plugins/joda-time-1.1/src/groovy"/>
         <property name="context-root" value="metropeeps"/>
         <property name="java-output-path" value="/metropeeps/target/classes"/>
     </wb-module>

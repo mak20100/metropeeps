@@ -29,6 +29,48 @@
                             
                         </tr>
                     
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="profile.firstName.label" default="First Name" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "firstName")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="profile.lastName.label" default="Last Name" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "lastName")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="profile.nickName.label" default="Nick Name" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "nickName")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="profile.dateCreated.label" default="Date Created" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "dateCreated")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="profile.lastUpdated.label" default="Last Updated" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "lastUpdated")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="profile.user.label" default="User" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="user" action="show" id="${profileInstance?.user?.id}">${profileInstance?.user?.email}</g:link></td>
+                            
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>

@@ -1,13 +1,36 @@
 package com.metropeeps
 
-class Profile extends _Auditable{
-	String firstName, lastNameInitial, nickName
-	String profilePic
+import org.apache.commons.lang.builder.EqualsBuilder
+import org.apache.commons.lang.builder.HashCodeBuilder
+import org.apache.commons.lang.builder.ToStringBuilder
+
+import com.Auditable
+
+class Profile extends Auditable{
+	static belongsTo = [user:User]
+	
+	String firstName, lastName, nickName
+	//	String profilePic
 
 	static constraints = {
-		firstName(maxSize:500)
-//		firstName(blank:false, size:2..32)
-//		lastNameInitial(blank:false, size:1)
-//		nickName(blank:true, nullable:true)
+		firstName blank:false
+		lastName blank:false
+		nickName nullable:true
+	}
+	
+	boolean equals( obj ) {
+		if(!(obj instanceof Profile)) return false
+		if(obj.is(this)) return true
+
+		Profile p = (Profile) obj
+		new EqualsBuilder().append(firstName, p.firstName).append(lastName, p.lastName).append(nickName, p.nickName).isEquals()
+	}
+
+	int hashCode() {
+		new HashCodeBuilder().append(firstName).append(lastName).append(nickName).toHashCode()
+	}
+
+	String toString(){
+		ToStringBuilder.reflectionToString(this)
 	}
 }

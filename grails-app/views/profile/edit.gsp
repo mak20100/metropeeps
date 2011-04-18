@@ -31,6 +31,42 @@
                     <table>
                         <tbody>
                         
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="firstName"><g:message code="profile.firstName.label" default="First Name" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'firstName', 'errors')}">
+                                    <input type="text" id="firstName" name="firstName" value="${fieldValue(bean:profileInstance,field:'firstName')}"/>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="lastName"><g:message code="profile.lastName.label" default="Last Name" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'lastName', 'errors')}">
+                                    <input type="text" id="lastName" name="lastName" value="${fieldValue(bean:profileInstance,field:'lastName')}"/>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="nickName"><g:message code="profile.nickName.label" default="Nick Name" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'nickName', 'errors')}">
+                                    <input type="text" id="nickName" name="nickName" value="${fieldValue(bean:profileInstance,field:'nickName')}"/>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="user"><g:message code="profile.user.label" default="User" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'user', 'errors')}">
+                                    <g:select optionKey="id" optionValue="${{it.email}}" from="${com.metropeeps.User.list()}" name="user.id" value="${profileInstance?.user?.id}" ></g:select>
+                                </td>
+                            </tr>
+                        
                         </tbody>
                     </table>
                 </div>

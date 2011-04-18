@@ -29,6 +29,55 @@
                             
                         </tr>
                     
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.title.label" default="Title" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "title")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.description.label" default="Description" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "description")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.date.label" default="Date" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "date")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.dateCreated.label" default="Date Created" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "dateCreated")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.lastUpdated.label" default="Last Updated" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "lastUpdated")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.owner.label" default="Owner" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="user" action="show" id="${eventInstance?.owner?.id}">${eventInstance?.owner?.email}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.time.label" default="Time" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "time")}</td>
+                            
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>
