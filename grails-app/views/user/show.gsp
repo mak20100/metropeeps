@@ -25,28 +25,28 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "id")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: user, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.email.label" default="Email" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "email")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: user, field: "email")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.profile.label" default="Profile" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="profile" action="show" id="${userInstance?.profile?.id}">${userInstance?.profile?.firstName} ${userInstance?.profile?.lastName}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="profile" action="show" id="${user?.profile?.id}">${user?.profile?.firstName} ${user?.profile?.lastName}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.dateCreated.label" default="Date Created" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "dateCreated")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: user, field: "dateCreated")}</td>
                             
                         </tr>
                     
@@ -55,7 +55,7 @@
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${userInstance.events}" var="e">
+                                <g:each in="${user.events}" var="e">
                                     <li><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
@@ -66,7 +66,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.lastUpdated.label" default="Last Updated" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "lastUpdated")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: user, field: "lastUpdated")}</td>
                             
                         </tr>
                     
@@ -75,7 +75,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${userInstance?.id}" />
+                    <g:hiddenField name="id" value="${user?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

@@ -19,14 +19,14 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${userInstance}">
+            <g:hasErrors bean="${user}">
             <div class="errors">
-                <g:renderErrors bean="${userInstance}" as="list" />
+                <g:renderErrors bean="${user}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${userInstance?.id}" />
-                <g:hiddenField name="version" value="${userInstance?.version}" />
+                <g:hiddenField name="id" value="${user?.id}" />
+                <g:hiddenField name="version" value="${user?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -35,8 +35,8 @@
                                 <td valign="top" class="name">
                                   <label for="email"><g:message code="user.email.label" default="Email" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'email', 'errors')}">
-                                    <input type="text" id="email" name="email" value="${fieldValue(bean:userInstance,field:'email')}"/>
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'email', 'errors')}">
+                                    <input type="text" id="email" name="email" value="${fieldValue(bean:user,field:'email')}"/>
                                 </td>
                             </tr>
                         
@@ -44,8 +44,8 @@
                                 <td valign="top" class="name">
                                   <label for="profile"><g:message code="user.profile.label" default="Profile" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'profile', 'errors')}">
-                                    <g:select optionKey="id" optionValue="${{it.firstName + ' ' + it.lastName}}" from="${com.metropeeps.Profile.list()}" name="profile.id" value="${userInstance?.profile?.id}" noSelection="['null':'']"></g:select>
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'profile', 'errors')}">
+                                    <g:select optionKey="id" optionValue="${{it.firstName + ' ' + it.lastName}}" from="${com.metropeeps.Profile.list()}" name="profile.id" value="${user?.profile?.id}" noSelection="['null':'']"></g:select>
                                 </td>
                             </tr>
                         
@@ -53,14 +53,14 @@
                                 <td valign="top" class="name">
                                   <label for="events"><g:message code="user.events.label" default="Events" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'events', 'errors')}">
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'events', 'errors')}">
                                     
 <ul>
-<g:each var="e" in="${userInstance?.events?}">
+<g:each var="e" in="${user?.events?}">
     <li><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
-<g:link controller="event" params="['user.id':userInstance?.id]" action="create">Add Event</g:link>
+<g:link controller="event" params="['user.id':user?.id]" action="create">Add Event</g:link>
 
                                 </td>
                             </tr>

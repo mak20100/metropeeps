@@ -9,12 +9,18 @@ import com.Auditable
 
 class User extends Auditable{
 	String email
+	String password, passwordVerify
 	Profile profile
-	static hasMany = [ events : Event ]
+	
+	// datasource relations
+	static hasMany = [events : Event]
+	static transients = ['passwordVerify']
 
+	// datasource contstraints
 	static constraints = {
 		email blank:false, email:true, unique:true
 		profile nullable:true, unique:true
+		password blank:false, size:8..32
 	}
 
 	boolean equals( obj ) {

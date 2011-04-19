@@ -25,6 +25,8 @@
                             <g:sortableColumn property="id" title="${message(code: 'user.id.label', default: 'Id')}" />
                         
                             <g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
+                            
+                            <g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
                         
                             <th><g:message code="user.profile.label" default="Profile" /></th>
                         
@@ -35,18 +37,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${userInstanceList}" status="i" var="userInstance">
+                    <g:each in="${userList}" status="i" var="user">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${user.id}">${fieldValue(bean: user, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: userInstance, field: "email")}</td>
+                            <td>${fieldValue(bean: user, field: "email")}</td>
                         
-                            <td>${userInstance?.profile?.firstName} ${userInstance?.profile?.lastName}</td>
+                            <td>${fieldValue(bean: user, field: "password")}</td>
                         
-                            <td>${fieldValue(bean: userInstance, field: "dateCreated")}</td>
+                            <td>${user?.profile?.firstName} ${user?.profile?.lastName}</td>
                         
-                            <td>${fieldValue(bean: userInstance, field: "lastUpdated")}</td>
+                            <td>${fieldValue(bean: user, field: "dateCreated")}</td>
+                        
+                            <td>${fieldValue(bean: user, field: "lastUpdated")}</td>
                         
                         </tr>
                     </g:each>
@@ -54,7 +58,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${userInstanceTotal}" />
+                <g:paginate total="${userTotal}" />
             </div>
         </div>
     </body>

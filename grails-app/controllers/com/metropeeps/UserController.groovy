@@ -10,67 +10,77 @@ class UserController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [userInstanceList: User.list(params), userInstanceTotal: User.count()]
+        [userList: User.list(params), userTotal: User.count()]
     }
 
     def create = {
-        def userInstance = new User()
-        userInstance.properties = params
-        return [userInstance: userInstance]
+        def user = new User()
+        user.properties = params
+        return [user: user]
     }
 
     def save = {
-        def userInstance = new User(params)
-        if (userInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
-            redirect(action: "show", id: userInstance.id)
+        def user = new User(params)
+		
+		// verify the passwords
+		if(params.password != params.passwordVerify){
+			flash.message = "passwords do not match"
+			render(view: "create", model: [user: user])
+			return
+		}
+		
+		// save the user
+        if (user.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])}"
+            redirect(action: "show", id: user.id)
         }
         else {
-            render(view: "create", model: [userInstance: userInstance])
+			flash.message = "error(s) creating user"
+            render(view: "create", model: [user: user])
         }
     }
 
     def show = {
-        def userInstance = User.get(params.id)
-        if (!userInstance) {
+        def user = User.get(params.id)
+        if (!user) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [userInstance: userInstance]
+            [user: user]
         }
     }
 
     def edit = {
-        def userInstance = User.get(params.id)
-        if (!userInstance) {
+        def user = User.get(params.id)
+        if (!user) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [userInstance: userInstance]
+            return [user: user]
         }
     }
 
     def update = {
-        def userInstance = User.get(params.id)
-        if (userInstance) {
+        def user = User.get(params.id)
+        if (user) {
             if (params.version) {
                 def version = params.version.toLong()
-                if (userInstance.version > version) {
+                if (user.version > version) {
                     
-                    userInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'user.label', default: 'User')] as Object[], "Another user has updated this User while you were editing")
-                    render(view: "edit", model: [userInstance: userInstance])
+                    user.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'user.label', default: 'User')] as Object[], "Another user has updated this User while you were editing")
+                    render(view: "edit", model: [user: user])
                     return
                 }
             }
-            userInstance.properties = params
-            if (!userInstance.hasErrors() && userInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
-                redirect(action: "show", id: userInstance.id)
+            user.properties = params
+            if (!user.hasErrors() && user.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])}"
+                redirect(action: "show", id: user.id)
             }
             else {
-                render(view: "edit", model: [userInstance: userInstance])
+                render(view: "edit", model: [user: user])
             }
         }
         else {
@@ -80,10 +90,10 @@ class UserController {
     }
 
     def delete = {
-        def userInstance = User.get(params.id)
-        if (userInstance) {
+        def user = User.get(params.id)
+        if (user) {
             try {
-                userInstance.delete(flush: true)
+                user.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
                 redirect(action: "list")
             }

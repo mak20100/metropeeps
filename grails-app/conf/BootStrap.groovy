@@ -13,9 +13,11 @@ class BootStrap {
 		if(!User.count()){
 			u1 = new User(
 					email: "admin@metropeeps.com",
+					password: "hotspots",
 					profile: new Profile(firstName: "metro", lastName: "peeps"))
 			u2 = new User(
 					email: "timstorm@metropeeps.com",
+					password: "password",
 					profile: new Profile(firstName: "tim", lastName: "storm", nickName: "timmay"))
 
 			u1.save(failOnError:true)

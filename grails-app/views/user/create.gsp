@@ -18,9 +18,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${userInstance}">
+            <g:hasErrors bean="${user}">
             <div class="errors">
-                <g:renderErrors bean="${userInstance}" as="list" />
+                <g:renderErrors bean="${user}" as="list" />
             </div>
             </g:hasErrors>
             <g:form action="save" >
@@ -32,8 +32,26 @@
                                 <td valign="top" class="name">
                                     <label for="email"><g:message code="user.email.label" default="Email" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'email', 'errors')}">
-                                    <input type="text" id="email" name="email" value="${fieldValue(bean:userInstance,field:'email')}"/>
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'email', 'errors')}">
+                                    <input type="text" id="email" name="email" value="${fieldValue(bean:user,field:'email')}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="password"><g:message code="user.password.label" default="Password" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'password', 'errors')}">
+                                    <input type="password" id="password" name="password" value="${fieldValue(bean:user,field:'password')}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="passwordVerify"><g:message code="user.passwordVerify.label" default="Verify Password" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'passwordVerify', 'errors')}">
+                                    <input type="password" id="passwordVerify" name="passwordVerify" value="${fieldValue(bean:user,field:'passwordVerify')}"/>
                                 </td>
                             </tr>
                         
@@ -41,8 +59,8 @@
                                 <td valign="top" class="name">
                                     <label for="profile"><g:message code="user.profile.label" default="Profile" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'profile', 'errors')}">
-                                    <g:select optionKey="id" optionValue="${{it.firstName + ' ' + it.lastName}}" from="${com.metropeeps.Profile.list()}" name="profile.id" value="${userInstance?.profile?.id}" noSelection="['null':'']"></g:select>
+                                <td valign="top" class="value ${hasErrors(bean: user, field: 'profile', 'errors')}">
+                                    <g:select optionKey="id" optionValue="${{it.firstName + ' ' + it.lastName}}" from="${com.metropeeps.Profile.list()}" name="profile.id" value="${user?.profile?.id}" noSelection="['null':'']"></g:select>
                                 </td>
                             </tr>
                         
