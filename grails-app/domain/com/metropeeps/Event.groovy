@@ -8,7 +8,7 @@ import com.Auditable
 class Event extends Auditable{
 	String title, description
 	LocalDate date
-	LocalTime time
+	LocalTime startTime, endTime
 	static belongsTo = [owner:User]
 	
 	

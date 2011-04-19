@@ -1,13 +1,18 @@
 package unit.com.metropeeps
 
-import com.metropeeps.User;
-
+import static org.junit.Assert.*
 import grails.test.*
+
+import org.junit.Test
+
+import com.metropeeps.User
 
 /**
  * Test the {@link User} domain
  */
-class UserTests extends GrailsUnitTestCase {
+class UserTests {
+	
+	@Test
 	void test_equals() {
 		def user1 = new User(email: "test@metropeeps.com")
 		assertTrue "User should be equal to itself", user1 == user1
@@ -20,6 +25,7 @@ class UserTests extends GrailsUnitTestCase {
 		assertTrue "Users should NOT be equals",  user1 != user2
 	}
 
+	@Test
 	void test_hashCode() {
 		def user1 = new User(email: "test@metropeeps.com")
 		assertEquals "User's hash code should equal itself", user1.hashCode(), user1.hashCode()

@@ -1,11 +1,16 @@
 package unit.com.metropeeps
 
+import static org.junit.Assert.*
 import grails.test.*
+
+import org.junit.Test
 
 import com.metropeeps.Profile
 
-class ProfileTests extends GrailsUnitTestCase {
-    void test_equals() {
+class ProfileTests {
+
+	@Test
+	void test_equals() {
 		def profile1 = new Profile(firstName: "metro", lastName: "peeps")
 		assertTrue "Profile should be equal to itself", profile1 == profile1
 
@@ -17,6 +22,7 @@ class ProfileTests extends GrailsUnitTestCase {
 		assertTrue "Profiles should NOT be equals",  profile1 != profile2
 	}
 
+	@Test
 	void test_hashCode() {
 		def profile1 = new Profile(firstName: "metro", lastName: "peeps")
 		assertEquals "Profiles's hash code should equal itself", profile1.hashCode(), profile1.hashCode()

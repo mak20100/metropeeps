@@ -24,17 +24,21 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'event.id.label', default: 'Id')}" />
                         
+                            <g:sortableColumn property="owner" title="${message(code: 'event.owner.label', default: 'Owner')}" />
+                           
                             <g:sortableColumn property="title" title="${message(code: 'event.title.label', default: 'Title')}" />
                         
                             <g:sortableColumn property="description" title="${message(code: 'event.description.label', default: 'Description')}" />
                         
                             <g:sortableColumn property="date" title="${message(code: 'event.date.label', default: 'Date')}" />
+                           
+                            <g:sortableColumn property="startTime" title="${message(code: 'event.startTime.label', default: 'Start Time')}" />
+                            
+                            <g:sortableColumn property="endTime" title="${message(code: 'event.endTime.label', default: 'End Time')}" />
                         
                             <g:sortableColumn property="dateCreated" title="${message(code: 'event.dateCreated.label', default: 'Date Created')}" />
                         
                             <g:sortableColumn property="lastUpdated" title="${message(code: 'event.lastUpdated.label', default: 'Last Updated')}" />
-                           
-                            <g:sortableColumn property="owner" title="${message(code: 'event.owner.label', default: 'Owner')}" />
                         
                         </tr>
                     </thead>
@@ -44,18 +48,22 @@
                         
                             <td><g:link action="show" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "id")}</g:link></td>
                         
+                            <td>${eventInstance?.owner?.email}</td>
+                            
                             <td>${fieldValue(bean: eventInstance, field: "title")}</td>
                         
                             <td>${fieldValue(bean: eventInstance, field: "description")}</td>
                         
                             <td>${fieldValue(bean: eventInstance, field: "date")}</td>
+                            
+                            <td>${fieldValue(bean: eventInstance, field: "startTime")}</td>
+                            
+                            <td>${fieldValue(bean: eventInstance, field: "endTime")}</td>
                         
                             <td>${fieldValue(bean: eventInstance, field: "dateCreated")}</td>
                         
                             <td>${fieldValue(bean: eventInstance, field: "lastUpdated")}</td>
                             
-                            <td>${eventInstance?.owner?.email}</td>
-                        
                         </tr>
                     </g:each>
                     </tbody>

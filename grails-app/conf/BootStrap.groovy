@@ -28,12 +28,14 @@ class BootStrap {
 					owner: u1,
 					title: "Speciel Event",
 					date: new LocalDate().plusDays(2),
-					time: new LocalTime(15, 0, 0))
+					startTime: new LocalTime(15, 0, 0),
+					endTime: new LocalTime(17, 0, 0))
 			e2 = new Event(
 					owner: u2,
 					title: "Another Event",
 					date: new LocalDate().plusDays(2),
-					time: new LocalTime(15, 0, 0))
+					startTime: new LocalTime(15, 0, 0),
+					endTime: new LocalTime(18, 0, 0))
 
 			e1.save(failOnError:true)
 			e2.save(failOnError:true)

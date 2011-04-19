@@ -69,10 +69,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="time"><g:message code="event.time.label" default="Time" /></label>
+                                  <label for="startTime"><g:message code="event.startTime.label" default="Start Time" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'time', 'errors')}">
-                                    <joda:timePicker name="time" value="${eventInstance?.time}" ></joda:timePicker>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'startTime', 'errors')}">
+                                    <joda:timePicker name="startTime" value="${eventInstance?.startTime}" ></joda:timePicker>
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="endTime"><g:message code="event.endTime.label" default="end Time" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'endTime', 'errors')}">
+                                    <joda:timePicker name="endTime" value="${eventInstance?.endTime}" ></joda:timePicker>
                                 </td>
                             </tr>
                         

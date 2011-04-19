@@ -1,6 +1,8 @@
 package com.metropeeps
 
-class Comment extends _Auditable{
+import com.Auditable
+
+class Comment extends Auditable{
 
 	static constraints = {
 	}
