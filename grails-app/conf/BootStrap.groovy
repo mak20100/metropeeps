@@ -12,8 +12,8 @@ class BootStrap {
 
 		if(!User.count()){
 			u1 = new User(
-					email: "admin@metropeeps.com",
-					password: "hotspots",
+					email: "admin@mps.com",
+					password: "supersecret",
 					profile: new Profile(firstName: "metro", lastName: "peeps"))
 			u2 = new User(
 					email: "timstorm@metropeeps.com",
