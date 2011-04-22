@@ -25,42 +25,42 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="profile.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "id")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: profile, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="profile.firstName.label" default="First Name" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "firstName")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: profile, field: "firstName")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="profile.lastName.label" default="Last Name" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "lastName")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: profile, field: "lastName")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="profile.nickName.label" default="Nick Name" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "nickName")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: profile, field: "nickName")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="profile.dateCreated.label" default="Date Created" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "dateCreated")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: profile, field: "dateCreated")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="profile.lastUpdated.label" default="Last Updated" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: profileInstance, field: "lastUpdated")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: profile, field: "lastUpdated")}</td>
                             
                         </tr>
                     </tbody>
@@ -68,7 +68,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${profileInstance?.id}" />
+                    <g:hiddenField name="id" value="${profile?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

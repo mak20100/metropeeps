@@ -19,14 +19,14 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${profileInstance}">
+            <g:hasErrors bean="${profile}">
             <div class="errors">
-                <g:renderErrors bean="${profileInstance}" as="list" />
+                <g:renderErrors bean="${profile}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${profileInstance?.id}" />
-                <g:hiddenField name="version" value="${profileInstance?.version}" />
+                <g:hiddenField name="id" value="${profile?.id}" />
+                <g:hiddenField name="version" value="${profile?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -35,8 +35,8 @@
                                 <td valign="top" class="name">
                                   <label for="firstName"><g:message code="profile.firstName.label" default="First Name" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'firstName', 'errors')}">
-                                    <input type="text" id="firstName" name="firstName" value="${fieldValue(bean:profileInstance,field:'firstName')}"/>
+                                <td valign="top" class="value ${hasErrors(bean: profile, field: 'firstName', 'errors')}">
+                                    <input type="text" id="firstName" name="firstName" value="${fieldValue(bean:profile,field:'firstName')}"/>
                                 </td>
                             </tr>
                         
@@ -44,8 +44,8 @@
                                 <td valign="top" class="name">
                                   <label for="lastName"><g:message code="profile.lastName.label" default="Last Name" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'lastName', 'errors')}">
-                                    <input type="text" id="lastName" name="lastName" value="${fieldValue(bean:profileInstance,field:'lastName')}"/>
+                                <td valign="top" class="value ${hasErrors(bean: profile, field: 'lastName', 'errors')}">
+                                    <input type="text" id="lastName" name="lastName" value="${fieldValue(bean:profile,field:'lastName')}"/>
                                 </td>
                             </tr>
                         
@@ -53,8 +53,8 @@
                                 <td valign="top" class="name">
                                   <label for="nickName"><g:message code="profile.nickName.label" default="Nick Name" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: profileInstance, field: 'nickName', 'errors')}">
-                                    <input type="text" id="nickName" name="nickName" value="${fieldValue(bean:profileInstance,field:'nickName')}"/>
+                                <td valign="top" class="value ${hasErrors(bean: profile, field: 'nickName', 'errors')}">
+                                    <input type="text" id="nickName" name="nickName" value="${fieldValue(bean:profile,field:'nickName')}"/>
                                 </td>
                             </tr>
                         

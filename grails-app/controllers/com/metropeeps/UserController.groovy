@@ -1,5 +1,6 @@
 package com.metropeeps
 
+
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -14,8 +15,7 @@ class UserController {
     }
 
     def create = {
-        def user = new User()
-        user.properties = params
+        def user = new User(params)
         return [user: user]
     }
 
@@ -107,4 +107,20 @@ class UserController {
             redirect(action: "list")
         }
     }
+	
+	def login = {
+		def user = User.findByEmail(params.email)
+		if(user && user.password == params.password){
+			session.user = user
+			redirect(view:'/index')
+		}else{
+			flash.message = "Invalid email and passowrd"
+			render(view:'login')
+		}
+	}
+	
+	def logout = {
+		session.user = null
+		render(view:'login')
+	}
 }

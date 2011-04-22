@@ -3,9 +3,11 @@ package unit.com.metropeeps
 import static org.junit.Assert.*
 import grails.test.*
 
+
 import org.junit.Test
 
-import com.metropeeps.Profile
+import com.metropeeps.Profile;
+
 
 class ProfileTests {
 

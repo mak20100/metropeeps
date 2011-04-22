@@ -3,9 +3,10 @@ package unit.com.metropeeps
 import static org.junit.Assert.*
 import grails.test.*
 
+
 import org.junit.Test
 
-import com.metropeeps.User
+import com.metropeeps.User;
 
 /**
  * Test the {@link User} domain

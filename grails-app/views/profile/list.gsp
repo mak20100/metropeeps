@@ -37,20 +37,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${profileInstanceList}" status="i" var="profileInstance">
+                    <g:each in="${profileList}" status="i" var="profile">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${profileInstance.id}">${fieldValue(bean: profileInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${profile.id}">${fieldValue(bean: profile, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: profileInstance, field: "firstName")}</td>
+                            <td>${fieldValue(bean: profile, field: "firstName")}</td>
                         
-                            <td>${fieldValue(bean: profileInstance, field: "lastName")}</td>
+                            <td>${fieldValue(bean: profile, field: "lastName")}</td>
                         
-                            <td>${fieldValue(bean: profileInstance, field: "nickName")}</td>
+                            <td>${fieldValue(bean: profile, field: "nickName")}</td>
                         
-                            <td>${fieldValue(bean: profileInstance, field: "dateCreated")}</td>
+                            <td>${fieldValue(bean: profile, field: "dateCreated")}</td>
                         
-                            <td>${fieldValue(bean: profileInstance, field: "lastUpdated")}</td>
+                            <td>${fieldValue(bean: profile, field: "lastUpdated")}</td>
                         
                         </tr>
                     </g:each>
@@ -58,7 +58,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${profileInstanceTotal}" />
+                <g:paginate total="${profileTotal}" />
             </div>
         </div>
     </body>

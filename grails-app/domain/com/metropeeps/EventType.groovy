@@ -1,11 +1,11 @@
 package com.metropeeps
 
-import com.Auditable
+
 
 /**
  * Ex. Tennis, Dining
  */
-class EventType extends Auditable{
+class EventType extends _Auditable{
 
     static constraints = {
     }

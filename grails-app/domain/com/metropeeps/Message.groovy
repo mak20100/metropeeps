@@ -1,7 +1,5 @@
 package com.metropeeps
 
-class Message {
 
-    static constraints = {
-    }
+class Message extends _Auditable{
 }

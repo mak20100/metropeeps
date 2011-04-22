@@ -1,7 +1,5 @@
 package com.metropeeps
 
-class Friend {
 
-    static constraints = {
-    }
+class Friend extends _Auditable{
 }

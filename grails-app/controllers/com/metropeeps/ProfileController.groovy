@@ -10,67 +10,67 @@ class ProfileController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [profileInstanceList: Profile.list(params), profileInstanceTotal: Profile.count()]
+        [profile: Profile.list(params), profileTotal: Profile.count()]
     }
 
     def create = {
-        def profileInstance = new Profile()
-        profileInstance.properties = params
-        return [profileInstance: profileInstance]
+        def profile = new Profile()
+        profile.properties = params
+        return [profile: profile]
     }
 
     def save = {
-        def profileInstance = new Profile(params)
-        if (profileInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])}"
-            redirect(action: "show", id: profileInstance.id)
+        def profile = new Profile(params)
+        if (profile.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])}"
+            redirect(action: "show", id: profile.id)
         }
         else {
-            render(view: "create", model: [profileInstance: profileInstance])
+            render(view: "create", model: [profile: profile])
         }
     }
 
     def show = {
-        def profileInstance = Profile.get(params.id)
-        if (!profileInstance) {
+        def profile = Profile.get(params.id)
+        if (!profile) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [profileInstance: profileInstance]
+            [profile: profile]
         }
     }
 
     def edit = {
-        def profileInstance = Profile.get(params.id)
-        if (!profileInstance) {
+        def profile = Profile.get(params.id)
+        if (!profile) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'profile.label', default: 'Profile'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [profileInstance: profileInstance]
+            return [profile: profile]
         }
     }
 
     def update = {
-        def profileInstance = Profile.get(params.id)
-        if (profileInstance) {
+        def profile = Profile.get(params.id)
+        if (profile) {
             if (params.version) {
                 def version = params.version.toLong()
-                if (profileInstance.version > version) {
+                if (profile.version > version) {
                     
-                    profileInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'profile.label', default: 'Profile')] as Object[], "Another user has updated this Profile while you were editing")
-                    render(view: "edit", model: [profileInstance: profileInstance])
+                    profile.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'profile.label', default: 'Profile')] as Object[], "Another user has updated this Profile while you were editing")
+                    render(view: "edit", model: [profile: profile])
                     return
                 }
             }
-            profileInstance.properties = params
-            if (!profileInstance.hasErrors() && profileInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])}"
-                redirect(action: "show", id: profileInstance.id)
+            profile.properties = params
+            if (!profile.hasErrors() && profile.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'profile.label', default: 'Profile'), profile.id])}"
+                redirect(action: "show", id: profile.id)
             }
             else {
-                render(view: "edit", model: [profileInstance: profileInstance])
+                render(view: "edit", model: [profile: profile])
             }
         }
         else {
@@ -80,10 +80,10 @@ class ProfileController {
     }
 
     def delete = {
-        def profileInstance = Profile.get(params.id)
-        if (profileInstance) {
+        def profile = Profile.get(params.id)
+        if (profile) {
             try {
-                profileInstance.delete(flush: true)
+                profile.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'profile.label', default: 'Profile'), params.id])}"
                 redirect(action: "list")
             }
