@@ -14,7 +14,7 @@ class Membership extends _Auditable{
 	 * @param event
 	 * @return the {@link Membership} link of the user and event
 	 */
-	static Membership link(user, event){
+	static Membership link(User user, Event event){
 		def m = Membership.findByUserAndEvent(user, event)
 		if(!m){
 			m = new Membership()
@@ -30,7 +30,7 @@ class Membership extends _Auditable{
 	 * @param user
 	 * @param event
 	 */
-	static void unlink(user, event){
+	static void unlink(User user, Event event){
 		def m = Membership.findByUserAndEvent(user, event)
 		if(m){
 			user?.removeFromMemberOf(m)

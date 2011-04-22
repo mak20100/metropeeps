@@ -18,6 +18,7 @@ class User extends _Auditable{
 	// relations
 	static transients = ['passwordVerify']
 	static hasMany = [ownerOf:Event, memberOf:Membership]
+    static fetchMode = [ownerOf:"eager", memberOf:"eager"] // eager fetch collections
 	static mappedBy = [ownerOf:'owner']
 
 	static constraints = {
@@ -37,7 +38,7 @@ class User extends _Auditable{
 	 * @param event this user should be added as a member of
 	 * @return all events this user is a member of
 	 */
-	List addToEvent(event){
+	List addToEvent(Event event){
 		Membership.link(this, event)
 		memberOfEvents()
 	}
@@ -46,7 +47,7 @@ class User extends _Auditable{
 	 * @param event this user should be removed as a member of
 	 * @return all events this user is a member of
 	 */
-	List removeFromEvent(event){
+	List removeFromEvent(Event event){
 		Membership.unlink(this, event)
 		memberOfEvents()
 	}

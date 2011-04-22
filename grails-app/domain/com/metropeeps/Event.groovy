@@ -35,7 +35,7 @@ class Event extends _Auditable{
 	 * @param user to add to this events membership
 	 * @return all members of this event
 	 */
-	List addToMembership(user){
+	List addToMembership(User user){
 		Membership.link(user, this)
 		eventMembership()
 	}
@@ -44,7 +44,7 @@ class Event extends _Auditable{
 	 * @param user to remove from this events membership
 	 * @return all members of this event
 	 */
-	List removeFromMembership(user){
+	List removeFromMembership(User user){
 		Membership.unlink(user, this)
 		eventMembership()
 	}
