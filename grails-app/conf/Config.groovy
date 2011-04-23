@@ -1,5 +1,6 @@
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
+import org.joda.time.LocalDateTime
 import org.joda.time.LocalTime
 import org.joda.time.contrib.hibernate.PersistentDateTime
 import org.joda.time.contrib.hibernate.PersistentLocalDate
@@ -38,6 +39,7 @@ grails.gorm.default.mapping = {
 	'user-type' type: PersistentLocalDate, class: LocalDate
 	'user-type' type: PersistentLocalTimeExact, class: LocalTime
 	'user-type' type: PersistentDateTime, class: DateTime
+	'user-type' type: PersistentDateTime, class: LocalDateTime
 }
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000

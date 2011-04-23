@@ -10,7 +10,7 @@ class ProfileController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [profile: Profile.list(params), profileTotal: Profile.count()]
+        [profileList: Profile.list(params), profileTotal: Profile.count()]
     }
 
     def create = {

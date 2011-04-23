@@ -21,37 +21,23 @@
                 <table>
                     <thead>
                         <tr>
-                        
                             <g:sortableColumn property="id" title="${message(code: 'profile.id.label', default: 'Id')}" />
-                        
                             <g:sortableColumn property="firstName" title="${message(code: 'profile.firstName.label', default: 'First Name')}" />
-                        
                             <g:sortableColumn property="lastName" title="${message(code: 'profile.lastName.label', default: 'Last Name')}" />
-                        
                             <g:sortableColumn property="nickName" title="${message(code: 'profile.nickName.label', default: 'Nick Name')}" />
-                        
                             <g:sortableColumn property="dateCreated" title="${message(code: 'profile.dateCreated.label', default: 'Date Created')}" />
-                        
                             <g:sortableColumn property="lastUpdated" title="${message(code: 'profile.lastUpdated.label', default: 'Last Updated')}" />
-                        
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${profileList}" status="i" var="profile">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
                             <td><g:link action="show" id="${profile.id}">${fieldValue(bean: profile, field: "id")}</g:link></td>
-                        
                             <td>${fieldValue(bean: profile, field: "firstName")}</td>
-                        
                             <td>${fieldValue(bean: profile, field: "lastName")}</td>
-                        
                             <td>${fieldValue(bean: profile, field: "nickName")}</td>
-                        
                             <td>${fieldValue(bean: profile, field: "dateCreated")}</td>
-                        
                             <td>${fieldValue(bean: profile, field: "lastUpdated")}</td>
-                        
                         </tr>
                     </g:each>
                     </tbody>

@@ -3,8 +3,7 @@ package integration.metropeeps.com
 import static org.junit.Assert.*
 import grails.test.*
 
-import org.joda.time.LocalDate
-import org.joda.time.LocalTime
+import org.joda.time.DateTime
 import org.junit.After
 import org.junit.Test
 
@@ -62,29 +61,28 @@ class UserTests {
 		user.email = "integration;test@metropeeps.com"
 		assertFalse user.validate()
 	}
-	
+
 	@Test
 	void test_add_remove_Event() {
 		def owner = new User(email:testEmail, password:"password")
 		def member = new User(email:altEmail, password:"password")
 		def event = new Event(owner: owner,
 				title: eventTitle,
-				date: new LocalDate(),
-				startTime: new LocalTime(),
-				endTime: new LocalTime())
+				start: new DateTime(),
+				end: new DateTime())
 		owner.save(flush:true)
 		event.save(flush:true)
 		member.save(flush:true)
-		member.addToEvent(event)
-		
-		def memberEvents = member.memberOfEvents()
-		assertNotNull "Member events should not be null", memberEvents
-		assertFalse "Member events should not be empty", memberEvents.isEmpty()
-		assertTrue "Member should be associated to the event", memberEvents.contains(event)
-		
-		member.removeFromEvent(event)
-		memberEvents = member.memberOfEvents()
-		assertNotNull "Member events should not be null", memberEvents
-		assertTrue "Member events should be emtpy", memberEvents.isEmpty()
+		member.registerFor(event)
+
+		def events = member.registeredEvents()
+		assertNotNull "Member events should not be null", events
+		assertFalse "Member events should not be empty", events.isEmpty()
+		assertTrue "Member should be associated to the event", events.contains(event)
+
+		member.unregisterFrom(event)
+		events = member.registeredEvents()
+		assertNotNull "Member events should not be null", events
+		assertTrue "Member events should be emtpy", events.isEmpty()
 	}
 }

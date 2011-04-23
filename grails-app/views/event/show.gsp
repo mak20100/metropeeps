@@ -24,47 +24,42 @@
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="event.id.label" default="Id" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "id")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "id")}</td>
                         </tr>
                         
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="event.owner.label" default="Owner" /></td>
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${eventInstance?.owner?.id}">${eventInstance?.owner?.email}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="user" action="show" id="${event?.owner?.id}">${event?.owner?.email}</g:link></td>
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="event.title.label" default="Title" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "title")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "title")}</td>
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="event.description.label" default="Description" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "description")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "description")}</td>
                         </tr>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="event.date.label" default="Date" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "date")}</td>
+                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="event.start.label" default="Start" /></td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "start")}</td>
                         </tr>
                         
                          <tr class="prop">
-                            <td valign="top" class="name"><g:message code="event.startTime.label" default="Start Time" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "startTime")}</td>
-                        </tr>
-                        
-                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="event.startTime.label" default="End Time" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "endTime")}</td>
+                            <td valign="top" class="name"><g:message code="event.end.label" default="End" /></td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "end")}</td>
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="event.dateCreated.label" default="Date Created" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "dateCreated")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "dateCreated")}</td>
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="event.lastUpdated.label" default="Last Updated" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: eventInstance, field: "lastUpdated")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: event, field: "lastUpdated")}</td>
                         </tr>
                     
                     </tbody>
@@ -72,7 +67,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${eventInstance?.id}" />
+                    <g:hiddenField name="id" value="${event?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

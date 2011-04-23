@@ -3,8 +3,7 @@ package com.metropeeps
 import org.apache.commons.lang.builder.EqualsBuilder
 import org.apache.commons.lang.builder.HashCodeBuilder
 import org.apache.commons.lang.builder.ToStringBuilder
-import org.joda.time.LocalDate
-import org.joda.time.LocalTime
+import org.joda.time.DateTime
 
 
 /**
@@ -12,8 +11,7 @@ import org.joda.time.LocalTime
  */
 class Event extends _Auditable{
 	String title, description
-	LocalDate date
-	LocalTime startTime, endTime
+	DateTime start, end
 
 	// relations
 	static belongsTo = [owner:User]
@@ -23,11 +21,15 @@ class Event extends _Auditable{
 		title blank:false, maxSize:80
 		description nullable:true
 	}
-
+	
+	static mapping = {
+		membership cascade: "all-delete-orphan" // allows uni-directional deleting of members
+	}
+	
 	/**
 	 * @return all members of this event
 	 */
-	List eventMembership(){
+	List members(){
 		membership.collect{it.user}
 	}
 
@@ -35,18 +37,18 @@ class Event extends _Auditable{
 	 * @param user to add to this events membership
 	 * @return all members of this event
 	 */
-	List addToMembership(User user){
+	List register(User user){
 		Membership.link(user, this)
-		eventMembership()
+		members()
 	}
 
 	/**
 	 * @param user to remove from this events membership
 	 * @return all members of this event
 	 */
-	List removeFromMembership(User user){
+	List unregister(User user){
 		Membership.unlink(user, this)
-		eventMembership()
+		members()
 	}
 
 	boolean equals( obj ) {
@@ -57,18 +59,16 @@ class Event extends _Auditable{
 		new EqualsBuilder().
 				append(title, e.title).
 				append(description, e.description).
-				append(date, e.date).
-				append(startTime, e.startTime).
-				append(endTime, e.endTime).isEquals()
+				append(start, e.start).
+				append(end, e.end).isEquals()
 	}
 
 	int hashCode() {
 		new HashCodeBuilder().
 				append(title).
 				append(description).
-				append(date).
-				append(startTime).
-				append(endTime).toHashCode()
+				append(start).
+				append(end).toHashCode()
 	}
 
 	String toString(){

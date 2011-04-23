@@ -1,10 +1,9 @@
 
-import org.joda.time.LocalDate
-import org.joda.time.LocalTime
+import org.joda.time.DateTime
 
-import com.metropeeps.Event;
-import com.metropeeps.Profile;
-import com.metropeeps.User;
+import com.metropeeps.Event
+import com.metropeeps.Profile
+import com.metropeeps.User
 
 class BootStrap {
 
@@ -40,48 +39,41 @@ class BootStrap {
 					owner: u1,
 					title: "Lenny Kravitz Concert",
 					description: "Lenny Kravitz Concert at Mile High Stadium",
-					date: new LocalDate().plusDays(14),
-					startTime: new LocalTime(17, 0, 0),
-					endTime: new LocalTime(20, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(14).withHourOfDay(17),
+					end: new DateTime().plusDays(14).withHourOfDay(20)).save(failOnError:true)
 			new Event(
 					owner: u1,
 					title: "Lady GaGa Concert",
 					description: "The GaGa at Pepsi Center",
-					date: new LocalDate().plusDays(21),
-					startTime: new LocalTime(18, 0, 0),
-					endTime: new LocalTime(21, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(21).withHourOfDay(18),
+					end: new DateTime().plusDays(21).withHourOfDay(18)).save(failOnError:true)
 			new Event(
 					owner: u2,
 					title: "Newcastle vs. Liverpool Soccer",
-					date: new LocalDate().plusDays(4),
-					startTime: new LocalTime(10, 0, 0),
-					endTime: new LocalTime(14, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(4).withHourOfDay(10),
+					end: new DateTime().plusDays(4).withHourOfDay(14)).save(failOnError:true)
 			new Event(
 					owner: u2,
 					title: "Web 2.0 Conference",
-					date: new LocalDate().plusDays(5),
-					startTime: new LocalTime(9, 0, 0),
-					endTime: new LocalTime(18, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(5).withHourOfDay(9),
+					end: new DateTime().plusDays(5).withHourOfDay(18)).save(failOnError:true)
 			new Event(
 					owner: u3,
 					title: "Rock Climbing in Boulder",
 					description: "Going to the Flat Irons to do some redpointing",
-					date: new LocalDate().plusDays(1),
-					startTime: new LocalTime(8, 0, 0),
-					endTime: new LocalTime(16, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(1).withHourOfDay(8),
+					end: new DateTime().plusDays(1).withHourOfDay(16)).save(failOnError:true)
 			new Event(
 					owner: u4,
 					title: "Orienteering Training",
 					description: "REI training on orienteering and navigation",
-					date: new LocalDate().plusDays(7),
-					startTime: new LocalTime(17, 0, 0),
-					endTime: new LocalTime(18, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(7).withHourOfDay(17),
+					end: new DateTime().plusDays(7).withHourOfDay(18)).save(failOnError:true)
 			new Event(
 					owner: u4,
 					title: "Leonid Meteor Shower",
-					date: new LocalDate().plusDays(7),
-					startTime: new LocalTime(21, 0, 0),
-					endTime: new LocalTime(23, 0, 0)).save(failOnError:true)
+					start: new DateTime().plusDays(7).withHourOfDay(21),
+					end:new DateTime().plusDays(8).withHourOfDay(2)).save(failOnError:true)
 		}
 	}
 

@@ -16,10 +16,15 @@ class User extends _Auditable{
 	Profile profile
 
 	// relations
-	static transients = ['passwordVerify']
+	static transients = ['passwordVerify'] // not persisted
 	static hasMany = [ownerOf:Event, memberOf:Membership]
     static fetchMode = [ownerOf:"eager", memberOf:"eager"] // eager fetch collections
 	static mappedBy = [ownerOf:'owner']
+	
+	static mapping = {
+		ownerOf cascade: "all-delete-orphan" // allows uni-directional deleting of owned events
+		memberOf cascade: "all-delete-orphan" // allows uni-directional deleting of member events
+	}
 
 	static constraints = {
 		email blank:false, email:true, unique:true
@@ -30,7 +35,7 @@ class User extends _Auditable{
 	/**
 	 * @return all events this user is a member of
 	 */
-	List memberOfEvents(){
+	List registeredEvents(){
 		memberOf.collect{it.event}
 	}
 
@@ -38,18 +43,18 @@ class User extends _Auditable{
 	 * @param event this user should be added as a member of
 	 * @return all events this user is a member of
 	 */
-	List addToEvent(Event event){
+	List registerFor(Event event){
 		Membership.link(this, event)
-		memberOfEvents()
+		registeredEvents()
 	}
 
 	/**
 	 * @param event this user should be removed as a member of
 	 * @return all events this user is a member of
 	 */
-	List removeFromEvent(Event event){
+	List unregisterFrom(Event event){
 		Membership.unlink(this, event)
-		memberOfEvents()
+		registeredEvents()
 	}
 
 	boolean equals( obj ) {

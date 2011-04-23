@@ -17,61 +17,50 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'event.id.label', default: 'Id')}" />
-                        
-                            <g:sortableColumn property="owner" title="${message(code: 'event.owner.label', default: 'Owner')}" />
-                           
-                            <g:sortableColumn property="title" title="${message(code: 'event.title.label', default: 'Title')}" />
-                        
-                            <g:sortableColumn property="description" title="${message(code: 'event.description.label', default: 'Description')}" />
-                        
-                            <g:sortableColumn property="date" title="${message(code: 'event.date.label', default: 'Date')}" />
-                           
-                            <g:sortableColumn property="startTime" title="${message(code: 'event.startTime.label', default: 'Start Time')}" />
-                            
-                            <g:sortableColumn property="endTime" title="${message(code: 'event.endTime.label', default: 'End Time')}" />
-                        
-                            <g:sortableColumn property="dateCreated" title="${message(code: 'event.dateCreated.label', default: 'Date Created')}" />
-                        
-                            <g:sortableColumn property="lastUpdated" title="${message(code: 'event.lastUpdated.label', default: 'Last Updated')}" />
-                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${eventInstanceList}" status="i" var="eventInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link action="show" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "id")}</g:link></td>
-                        
-                            <td>${eventInstance?.owner?.email}</td>
-                            
-                            <td>${fieldValue(bean: eventInstance, field: "title")}</td>
-                        
-                            <td>${fieldValue(bean: eventInstance, field: "description")}</td>
-                        
-                            <td>${fieldValue(bean: eventInstance, field: "date")}</td>
-                            
-                            <td>${fieldValue(bean: eventInstance, field: "startTime")}</td>
-                            
-                            <td>${fieldValue(bean: eventInstance, field: "endTime")}</td>
-                        
-                            <td>${fieldValue(bean: eventInstance, field: "dateCreated")}</td>
-                        
-                            <td>${fieldValue(bean: eventInstance, field: "lastUpdated")}</td>
-                            
-                        </tr>
-                    </g:each>
-                    </tbody>
-                </table>
-            </div>
-            <div class="paginateButtons">
-                <g:paginate total="${eventInstanceTotal}" />
-            </div>
+            <g:form method="post">
+	            <div class="list">
+	            	User to register events to: <g:select from="${com.metropeeps.User.list()}" optionKey="id" optionValue="${{it.email}}"  name="user.id" value="${{it.id}}" ></g:select>
+	                <table>
+	                    <thead>
+	                        <tr>
+	                        	<th class="sortable">Register</th>
+	                            <g:sortableColumn property="id" title="${message(code: 'event.id.label', default: 'Id')}" />
+	                            <g:sortableColumn property="owner" title="${message(code: 'event.owner.label', default: 'Owner')}" />
+	                            <g:sortableColumn property="title" title="${message(code: 'event.title.label', default: 'Title')}" />
+	                            <g:sortableColumn property="description" title="${message(code: 'event.description.label', default: 'Description')}" />
+	                            <g:sortableColumn property="start" title="${message(code: 'event.start.label', default: 'Start')}" />
+	                            <g:sortableColumn property="end" title="${message(code: 'event.end.label', default: 'End')}" />
+	                            <g:sortableColumn property="dateCreated" title="${message(code: 'event.dateCreated.label', default: 'Date Created')}" />
+	                            <g:sortableColumn property="lastUpdated" title="${message(code: 'event.lastUpdated.label', default: 'Last Updated')}" />
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                    
+	                    <g:each in="${eventList}" status="i" var="event">
+	                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+	                        	<td><g:checkBox name="register" value="${event.id}" checked="false"/></td>
+	                            <td><g:link action="show" id="${event.id}">${fieldValue(bean: event, field: "id")}</g:link></td>
+	                            <td>${event?.owner?.profile?.firstName} ${event?.owner?.profile?.lastName}</td>
+	                            <td>${fieldValue(bean: event, field: "title")}</td>
+	                            <td>${fieldValue(bean: event, field: "description")}</td>
+	                            <td>${fieldValue(bean: event, field: "start")}</td>
+	                            <td>${fieldValue(bean: event, field: "end")}</td>
+	                            <td>${fieldValue(bean: event, field: "dateCreated")}</td>
+	                            <td>${fieldValue(bean: event, field: "lastUpdated")}</td>
+	                        </tr>
+	                    </g:each>
+	                    </tbody>
+	                </table>
+	            </div>
+	            
+	            <div class="paginateButtons">
+	                <g:paginate total="${eventTotal}" />
+	            </div>
+	            <div class="buttons">
+	            	<span class="button"><g:actionSubmit class="save" action="register" value="${message(code: 'default.button.register.label', default: 'Register')}" /></span>
+	            	<span class="button"><g:actionSubmit class="delete" action="unregister" value="${message(code: 'default.button.unregister.label', default: 'UnRegister')}" /></span>
+	            </div>
+	        </g:form>
         </div>
     </body>
 </html>

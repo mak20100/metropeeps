@@ -51,19 +51,6 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.events.label" default="Events" /></td>
-                            
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${user.events}" var="e">
-                                    <li><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.lastUpdated.label" default="Last Updated" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: user, field: "lastUpdated")}</td>

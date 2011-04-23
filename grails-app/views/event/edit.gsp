@@ -19,24 +19,33 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${eventInstance}">
+            <g:hasErrors bean="${event}">
             <div class="errors">
-                <g:renderErrors bean="${eventInstance}" as="list" />
+                <g:renderErrors bean="${event}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${eventInstance?.id}" />
-                <g:hiddenField name="version" value="${eventInstance?.version}" />
+                <g:hiddenField name="id" value="${event?.id}" />
+                <g:hiddenField name="version" value="${event?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
+                        
+                        	<tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="owner"><g:message code="event.owner.label" default="Owner" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: event, field: 'owner', 'errors')}">
+                                    <g:select optionKey="id" optionValue="${{it.email}}" from="${com.metropeeps.User.list()}" name="owner.id" value="${event?.owner?.id}" ></g:select>
+                                </td>
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="title"><g:message code="event.title.label" default="Title" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'title', 'errors')}">
-                                    <input type="text" maxlength="80" id="title" name="title" value="${fieldValue(bean:eventInstance,field:'title')}"/>
+                                <td valign="top" class="value ${hasErrors(bean: event, field: 'title', 'errors')}">
+                                    <input type="text" maxlength="80" id="title" name="title" value="${fieldValue(bean:event,field:'title')}"/>
                                 </td>
                             </tr>
                         
@@ -44,26 +53,8 @@
                                 <td valign="top" class="name">
                                   <label for="description"><g:message code="event.description.label" default="Description" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'description', 'errors')}">
-                                    <input type="text" id="description" name="description" value="${fieldValue(bean:eventInstance,field:'description')}"/>
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="date"><g:message code="event.date.label" default="Date" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'date', 'errors')}">
-                                    <joda:datePicker name="date" value="${eventInstance?.date}" ></joda:datePicker>
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="owner"><g:message code="event.owner.label" default="Owner" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'owner', 'errors')}">
-                                    <g:select optionKey="id" optionValue="${{it.email}}" from="${com.metropeeps.User.list()}" name="owner.id" value="${eventInstance?.owner?.id}" ></g:select>
+                                <td valign="top" class="value ${hasErrors(bean: event, field: 'description', 'errors')}">
+                                    <input type="text" id="description" name="description" value="${fieldValue(bean:event,field:'description')}"/>
                                 </td>
                             </tr>
                         
@@ -71,8 +62,8 @@
                                 <td valign="top" class="name">
                                   <label for="startTime"><g:message code="event.startTime.label" default="Start Time" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'startTime', 'errors')}">
-                                    <joda:timePicker name="startTime" value="${eventInstance?.startTime}" ></joda:timePicker>
+                                <td valign="top" class="value ${hasErrors(bean: event, field: 'start', 'errors')}">
+                                    <joda:dateTimePicker name="start" value="${event?.start}" ></joda:dateTimePicker>
                                 </td>
                             </tr>
                         
@@ -80,8 +71,8 @@
                                 <td valign="top" class="name">
                                   <label for="endTime"><g:message code="event.endTime.label" default="end Time" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'endTime', 'errors')}">
-                                    <joda:timePicker name="endTime" value="${eventInstance?.endTime}" ></joda:timePicker>
+                                <td valign="top" class="value ${hasErrors(bean: event, field: 'end', 'errors')}">
+                                    <joda:dateTimePicker name="end" value="${event?.end}" ></joda:dateTimePicker>
                                 </td>
                             </tr>
                         
